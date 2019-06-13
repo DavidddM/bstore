@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="css/admin-style.css" />
+        <%- include('./partials/bootstrap'); %>
+        <title>Categories</title>
+    </head>
+
+    <body>
+        <%- include('./partials/nav'); %>
+        <div class="cont">
+            <div class="container">
+                <h1>Add Category</h1>
+                <form action="" method="POST">
+                    <div class="form-row">
+                        <div class="col-md mb-3">
+                            <label>Category Name</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="catName"
+                                value="<%= category.catName %>"
+                                required
+                            />
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">
+                        <%= buttonText %>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

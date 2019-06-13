@@ -1,0 +1,26 @@
+.cont {
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+#list--container {
+    max-width: 80%;
+}
+.actions {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.actions span:nth-child(2) {
+    margin-top: 15px;
+    color: darkred;
+}
+
+.actions > span {
+    cursor: pointer;
+}
+
+.inStock {
+    font-size: 20px;
+}

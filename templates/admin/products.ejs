@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="css/admin-style.css" />
+        <script src="scripts/admin/ajaxCalls.js"></script>
+        <%- include('./partials/bootstrap'); %>
+        <title>Products</title>
+    </head>
+
+    <body>
+        <%- include('./partials/nav'); %>
+        <div class="cont">
+            <div class="container">
+                <h1>Add Product</h1>
+                <form enctype="multipart/form-data" action="" method="POST">
+                    <div class="form-row">
+                        <div class="col-md mb-3">
+                            <label>Title</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                name="title"
+                                value="<%= product.title %>"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label>Price</label>
+                            <input
+                                type="text"
+                                name="price"
+                                class="form-control"
+                                value="<%= product.price %>"
+                                required
+                            />
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label>Category</label>
+                            <select
+                                id="cat-select"
+                                class="custom-select"
+                                name="category"
+                                value="<%= product.category %>"
+                            >
+                            </select>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label>In Stock</label>
+                            <select
+                                id="inStockSelect"
+                                class="custom-select"
+                                name="inStock"
+                                value="<%= product.inStock %>"
+                            >
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="custom-file">
+                        <input
+                            type="file"
+                            class="custom-file-input"
+                            name="image"
+                        />
+                        <label class="custom-file-label">Image</label>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md mb-3">
+                            <label>Short Description</label>
+                            <textarea
+                                name="miniDescription"
+                                class="form-control"
+                                required
+                            >
+<%= product.miniDescription %></textarea
+                            >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md mb-3">
+                            <label>Description</label>
+                            <textarea
+                                name="description"
+                                class="form-control"
+                                required
+                            >
+<%= product.description %></textarea
+                            >
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary" type="submit">
+                        <%= buttonText %>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

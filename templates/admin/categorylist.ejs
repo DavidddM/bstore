@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="css/admin-style.css" />
+        <script src="scripts/admin/categorylist.js"></script>
+        <%- include('./partials/bootstrap'); %>
+        <title>Categories List</title>
+    </head>
+    <body>
+        <%- include('./partials/nav'); %>
+        <div id="list--container" class="container">
+            <h1>Categories</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">კატეგორიის სახელი</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% categories.forEach( cat => { %>
+                    <tr>
+                        <th scope="row"><%= cat._id %></th>
+                        <td><%= cat.catName %></td>
+                        <td class="actions">
+                            <span
+                                data-action="edit"
+                                data-id="<%= cat._id %>"
+                                class="fas fa-edit"
+                            ></span>
+                            <span
+                                data-action="delete"
+                                data-id="<%= cat._id %>"
+                                class="fas fa-trash-alt"
+                            ></span>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+            <div class="d-flex flex-row-reverse">
+                <button id="addCat" type="button" class="btn btn-success">
+                    დამატება
+                </button>
+            </div>
+        </div>
+    </body>
+</html>

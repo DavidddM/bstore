@@ -1,0 +1,55 @@
+const { Router, static } = require("express");
+const { Types } = require("mongoose");
+const {
+    AddCategory,
+    GetCategory,
+    RemoveCategoryByID,
+    UpdateCategory
+} = require("../dbUtils");
+
+const path = require("path");
+router = Router();
+
+router.use(static(path.join(process.env.PWD, "static")));
+
+router.get("/list", async (req, res) => {
+    const categories = await GetCategory({});
+    res.render("admin/categorylist", { categories });
+});
+
+router.get("/", (req, res) => {
+    res.render("admin/categories", { buttonText: "დამატება", category: {} });
+});
+
+router.get("/:id", async (req, res) => {
+    const id = req.params.id;
+    if (!Types.ObjectId.isValid(id)) res.redirect("/admin");
+    else {
+        const category = await GetCategory({ _id: id });
+        res.render("admin/categories", {
+            buttonText: "შეცვლა",
+            category: category[0]
+        });
+    }
+});
+
+router.post("/", (req, res) => {
+    AddCategory(req.body, () => {
+        res.redirect("/");
+    });
+});
+
+router.post("/:id", async (req, res) => {
+    UpdateCategory({ _id: req.params.id }, req.body, () => {
+        res.redirect("/admin/category/list");
+    });
+});
+
+router.delete("/:id", (req, res) => {
+    const id = req.params.id;
+    RemoveCategoryByID({ id: id }, () => {
+        res.end();
+    });
+});
+
+module.exports = router;
