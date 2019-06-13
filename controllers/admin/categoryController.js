@@ -14,7 +14,16 @@ router.use(static(path.join(process.env.PWD, "static")));
 
 router.get("/list", async (req, res) => {
     const categories = await GetCategory({});
-    res.render("admin/categorylist", { categories });
+    res.render("admin/categorylist", { categories, search: true });
+});
+
+router.post("/list", async (req, res) => {
+    let jsonData = {};
+    if (req.body.searcht) {
+        jsonData = Object.assign(jsonData, { "catName": { "$regex": `${req.body.searcht}`, "$options": "i" } });
+    }
+    const categories = await GetCategory(jsonData);
+    res.render("admin/categorylist", { categories, search_text: req.body.searcht, search: true });
 });
 
 router.get("/", (req, res) => {
