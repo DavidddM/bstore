@@ -7,7 +7,7 @@ const ActionHandler = async ({ target }) => {
         case "delete": {
             const id = target.dataset.id;
             const response = fetch(
-                `http://localhost:8069/admin/category/${id}`,
+                `${document.location.origin}/admin/category/${id}`,
                 {
                     method: "delete"
                 }

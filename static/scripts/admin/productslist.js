@@ -7,7 +7,7 @@ const ActionHandler = async ({ target }) => {
         case "delete": {
             const id = target.dataset.id;
             const response = fetch(
-                `http://localhost:8069/admin/products/${id}`,
+                `${document.location.origin}/admin/products/${id}`,
                 {
                     method: "delete"
                 }
@@ -40,7 +40,7 @@ window.onload = () => {
     tds.forEach(element => {
         const categoryId = element.getAttribute("value");
         const catName = fetch(
-            `http://localhost:8069/api/catname/${categoryId}`,
+            `${document.location.origin}/api/catname/${categoryId}`,
             { method: "get" }
         )
             .then(resp => {
@@ -57,7 +57,6 @@ window.onload = () => {
     const inStocks = document.querySelectorAll(".inStock>span");
     inStocks.forEach(element => {
         const value = element.getAttribute("value");
-        console.log(value);
         if (value == "false") {
             element.style.color = "darkred";
         } else {

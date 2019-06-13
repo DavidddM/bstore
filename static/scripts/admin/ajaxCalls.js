@@ -1,5 +1,5 @@
 window.onload = async () => {
-    const categories = fetch("http://localhost:8069/api/allcats", {
+    const categories = fetch(`${document.location.origin}/api/allcats`, {
         method: "get"
     })
         .then(resp => {

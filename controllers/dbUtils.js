@@ -56,6 +56,13 @@ const UpdateProduct = (query, jsonData, cb) => {
     });
 };
 
+const UpdateUser = (query, jsonData, cb) => {
+    UserModel.findOneAndUpdate(query, jsonData, err=> {
+        if (err) throw err;
+        cb();
+    })
+}
+
 const RemoveCategoryByID = ({ id }, cb) => {
     CategoryModel.findOneAndDelete({ _id: id }, err => {
         if (err) throw err;
