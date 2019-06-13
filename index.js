@@ -8,6 +8,7 @@ const crypto = require("crypto");
 
 const { Login } = require("./controllers/dbUtils");
 const { adminController, apiController } = require("./controllers");
+const PORT = process.env.PORT || 8069;
 
 mongoose.connect(uri);
 const db = mongoose.connection;
@@ -57,6 +58,6 @@ app.get("/logout", (req, res) => {
     res.redirect("/admin");
 });
 
-app.listen(8069, () => {
-    console.log("Listening on port 8069");
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
 });
