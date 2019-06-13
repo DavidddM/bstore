@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link rel="stylesheet" href="css/admin-style.css" />
-        <script src="scripts/admin/categorylist.js"></script>
-        <%- include('./partials/bootstrap'); %>
-        <title>Categories List</title>
-    </head>
-    <body>
-        <%- include('./partials/nav'); %>
-        <div id="list--container" class="container">
-            <h1>Categories</h1>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="css/admin-style.css" />
+    <script src="scripts/admin/categorylist.js"></script>
+    <%- include('./partials/bootstrap'); %>
+    <title>Categories List</title>
+</head>
+
+<body>
+    <%- include('./partials/nav'); %>
+    <div id="list--container" class="container">
+        <h1>Categories</h1>
+        <div id="table--container">
             <table class="table">
                 <thead>
                     <tr>
@@ -27,16 +30,8 @@
                         <th scope="row"><%= cat._id %></th>
                         <td><%= cat.catName %></td>
                         <td class="actions">
-                            <span
-                                data-action="edit"
-                                data-id="<%= cat._id %>"
-                                class="fas fa-edit"
-                            ></span>
-                            <span
-                                data-action="delete"
-                                data-id="<%= cat._id %>"
-                                class="fas fa-trash-alt"
-                            ></span>
+                            <span data-action="edit" data-id="<%= cat._id %>" class="fas fa-edit"></span>
+                            <span data-action="delete" data-id="<%= cat._id %>" class="fas fa-trash-alt"></span>
                         </td>
                     </tr>
                     <% }) %>
@@ -48,5 +43,7 @@
                 </button>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

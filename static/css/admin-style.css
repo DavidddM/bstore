@@ -3,9 +3,17 @@
     margin: 0 auto;
     margin-top: 50px;
 }
+
 #list--container {
-    max-width: 80%;
+    max-width: 100%;
 }
+
+#table--container {
+    max-width: 80%;
+    margin: 0 auto;
+    overflow: auto;
+}
+
 .actions {
     font-size: 20px;
     display: flex;
@@ -17,10 +25,25 @@
     color: darkred;
 }
 
-.actions > span {
+.actions>span {
     cursor: pointer;
 }
 
 .inStock {
     font-size: 20px;
+}
+
+#table--container .img-thumbnail {
+    width: 100%;
+    max-width: 200px;
+}
+
+.table th, .table td {
+    text-align:center;
+}
+
+@media (max-width: 1100px) {
+    #table--container {
+        max-width: 100%;
+    }
 }

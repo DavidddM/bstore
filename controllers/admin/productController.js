@@ -20,7 +20,7 @@ router.get("/list", async (req, res) => {
 });
 
 router.get("/", (req, res) => {
-    res.render("admin/products", { buttonText: "დამატება", product: {} });
+    res.render("admin/products", { buttonText: "დამატება", title: "Add", product: {} });
 });
 
 router.post("/", upload.single("image"), (req, res) => {
@@ -53,6 +53,7 @@ router.get("/:id", async (req, res) => {
         const product = await GetProduct({ _id: id });
         res.render("admin/products", {
             buttonText: "შეცვლა",
+            title: "Edit",
             product: product[0]
         });
     }

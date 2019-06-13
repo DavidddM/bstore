@@ -18,7 +18,11 @@ router.get("/list", async (req, res) => {
 });
 
 router.get("/", (req, res) => {
-    res.render("admin/categories", { buttonText: "დამატება", category: {} });
+    res.render("admin/categories", {
+        buttonText: "დამატება",
+        title: "Add",
+        category: {}
+    });
 });
 
 router.get("/:id", async (req, res) => {
@@ -28,6 +32,7 @@ router.get("/:id", async (req, res) => {
         const category = await GetCategory({ _id: id });
         res.render("admin/categories", {
             buttonText: "შეცვლა",
+            title: "Add",
             category: category[0]
         });
     }
