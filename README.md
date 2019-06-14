@@ -7,6 +7,6 @@
 ლექტორი: ჯანო ბოკუჩავა  
 
 საიტი: http://bstore-btu.herokuapp.com/  
-ადმინ პანელი: http://bstore-btu.herokuapp.com/
+ადმინ პანელი: http://bstore-btu.herokuapp.com/login
 
 ადმინის კრედენციალები (რა თქმა უნდა): admin admin
