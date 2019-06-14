@@ -7,7 +7,7 @@ const path = require("path");
 const crypto = require("crypto");
 
 const { Login, GetProduct } = require("./controllers/dbUtils");
-const { adminController, apiController } = require("./controllers");
+const { adminController, apiController, productsController } = require("./controllers");
 const PORT = process.env.PORT || 8069;
 
 mongoose.connect(uri);
@@ -30,6 +30,8 @@ app.use(
     },
     adminController
 );
+app.use("/products", productsController);
+
 app.use("/api", apiController);
 app.use(express.static(path.join(process.env.PWD, "static")));
 app.get("/", async (req, res) => {

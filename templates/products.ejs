@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="scripts/loadSearchCategories.js"></script>
+  <title>Products</title>
+  <%- include('./admin/partials/bootstrap'); %>
+</head>
+
+<body>
+  <%- include('./partials/header'); %>
+
+  <!--prod-->
+  <div class="col-sm-12">
+    <section id="sectionproducts" class="our-webcoderskull padding-mg">
+      <div class="container">
+        <div class="row heading heading-icon">
+          <h2>წიგნები</h2>
+        </div>
+        <ul class="row">
+          <% products.forEach( prod => { %>
+          <li class="prod col-12 col-md-6 col-lg-3">
+            <div class="cnt-block equal-height">
+              <figure>
+                <img src="data:image/png;base64,<%= new Buffer(prod.imgBuffer).toString('base64') %>"
+                  class="img-responsive" alt="" />
+              </figure>
+              <div class="product-content">
+                <h3 class="title"><a href="#"><%= prod.title %></a></h3>
+                <div class="price">
+                  <span><%= prod.price %> ₾</span>
+                </div>
+                <p class="descript"><%= prod.miniDescription %></p>
+                <a class="add-to-cart" href=""><i class="fas fa-shopping-cart"></i></a>
+              </div>
+            </div>
+          </li>
+          <% }) %>
+        </ul>
+      </div>
+    </section>
+  </div>
+  </div>
+  </div>
+
+  <!--footer-->
+  <footer class="footer-distributed">
+    <div class="footer-left">
+      <h3>N<span>l</span></h3>
+
+      <p class="footer-links">
+        <a href="#">Home</a>
+        ·
+        <a href="#">Products</a>
+        ·
+        <a href="#">Categories</a>
+        ·
+        <a href="#sectionabout">Contuct Us</a>
+        ·
+        <a href="#">About</a>
+        ·
+        <a href="#"><i class="fas fa-shopping-cart"></i></a>
+      </p>
+
+      <p class="footer-company-name">NL &copy; 2019</p>
+    </div>
+
+    <div class="footer-center">
+      <div>
+        <i class="fa fa-map-marker"></i>
+        <p><span>Tbilisi</span> Bagebi</p>
+      </div>
+
+      <div>
+        <i class="fa fa-phone"></i>
+        <p>+010011001</p>
+      </div>
+
+      <div>
+        <i class="fa fa-envelope"></i>
+        <p><a href="mailto:ana.zurabashvili.1@btu.edu.ge">mymail.com</a></p>
+      </div>
+    </div>
+
+    <div class="footer-right">
+      <p class="footer-company-about">
+        <span>About Shop</span>
+        Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce
+        euismod convallis velit, eu auctor lacus vehicula sit amet.
+      </p>
+
+      <div class="footer-icons">
+        <a href="#"><i class="fab fa-facebook-square"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+
+</html>
