@@ -16,8 +16,6 @@
 
 .actions {
     font-size: 20px;
-    display: flex;
-    flex-direction: column;
 }
 
 .actions span:nth-child(2) {
