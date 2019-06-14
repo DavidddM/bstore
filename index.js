@@ -50,7 +50,13 @@ app.post("/login", async (req, res) => {
         username: username,
         password: password
     });
-    res.redirect("/admin");
+    if (req.session.loggedIn) {
+        req.session.user = username;
+        res.redirect("/admin");
+    } else {
+        res.render("admin/login", { message: "Wrong Password!", cl: "badMsg" });
+    }
+
 });
 
 app.get("/logout", (req, res) => {

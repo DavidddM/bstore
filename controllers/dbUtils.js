@@ -98,5 +98,6 @@ module.exports = {
     GetCategory,
     RemoveCategoryByID,
     UpdateCategory,
-    Login
+    Login,
+    UpdateUser
 };
