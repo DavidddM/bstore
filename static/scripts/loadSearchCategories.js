@@ -1,11 +1,3 @@
-a = document.querySelectorAll("a.nav-link");
-a.forEach(element => {
-    element.setAttribute(
-        "href",
-        `${document.location.origin}/${element.getAttribute("href")}`
-    );
-});
-
 const categories = fetch(`${document.location.origin}/api/allcats`, {
     method: "get"
 })
