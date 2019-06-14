@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>მთავარი</title>
+        <title>დეტალები</title>
         <link rel="stylesheet" href="css/style.css" />
         <script src="scripts/index.js"></script>
         <%- include('./admin/partials/bootstrap'); %>
@@ -15,7 +15,7 @@
             <div class="container">
                 <div class="container-fliud">
                     <div class="wrapper row">
-                        <div class="preview col-md-6">
+                        <div class="preview col-md-4">
                             <div class="preview-pic tab-content">
                                 <div class="tab-pane active" id="pic-1">
                                     <img
@@ -24,7 +24,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="details col-md-6">
+                        <div class="details col-md-8">
                             <h3 class="product-title"><%= product.title %></h3>
 
                             <p class="product-description">
@@ -34,11 +34,11 @@
                                 ფასი:
                                 <span><%= product.price %> ₾</span>
                             </h4>
+                            <%if (!product.inStock) { %>
                             <h4 class="price">
-                                <%if (!product.inStock) { %>
                                 <span class="badMsg">მარაგში არ არის</span>
-                                <% } %>
                             </h4>
+                            <% } %>
                         </div>
                     </div>
                 </div>
