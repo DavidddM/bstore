@@ -1,7 +1,4 @@
-const {
-    GetCategory,
-    GetProduct
-} = require("./dbUtils");
+const { GetCategory, GetProduct } = require("./dbUtils");
 const { Types } = require("mongoose");
 const { Router, static } = require("express");
 const path = require("path");
@@ -28,8 +25,17 @@ router.post("/", async (req, res) => {
     res.render("products", {
         products,
         active_category: req.body.category,
-        search_text: req.body.searcht,
+        search_text: req.body.searcht
     });
+});
+
+router.get("/:id", async (req, res) => {
+    const id = req.params.id;
+    if (!Types.ObjectId.isValid(id)) res.redirect("/");
+    else {
+        const product = await GetProduct({ _id: id });
+        res.render("details", { product: product[0] });
+    }
 });
 
 module.exports = router;

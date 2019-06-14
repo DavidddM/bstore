@@ -605,3 +605,11 @@ html {
     display: flex;
     justify-content: center;
 }
+
+#pic-1 > img {
+    width: 100%;
+}
+
+.badMsg {
+    color: red;
+}

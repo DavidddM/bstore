@@ -26,16 +26,17 @@
           <li class="prod col-12 col-md-6 col-lg-3">
             <div class="cnt-block equal-height">
               <figure>
-                <img src="data:image/png;base64,<%= new Buffer(prod.imgBuffer).toString('base64') %>"
-                  class="img-responsive" alt="" />
+                <a href="/products/<%= prod.id %>">
+                  <img src="data:image/png;base64,<%= new Buffer(prod.imgBuffer).toString('base64') %>"
+                    class="img-responsive" alt="" />
+                </a>
               </figure>
               <div class="product-content">
-                <h3 class="title"><a href="#"><%= prod.title %></a></h3>
+                <h3 class="title"><a href="/products/<%= prod.id %>"><%= prod.title %></a></h3>
                 <div class="price">
                   <span><%= prod.price %> ₾</span>
                 </div>
                 <p class="descript"><%= prod.miniDescription %></p>
-                <a class="add-to-cart" href=""><i class="fas fa-shopping-cart"></i></a>
               </div>
             </div>
           </li>
