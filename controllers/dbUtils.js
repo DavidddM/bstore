@@ -11,7 +11,7 @@ const AddCategory = (jsonData, cb) => {
 
 const GetCategory = jsonData => {
     return new Promise(resolve => {
-        CategoryModel.find(jsonData, (err, cats) => {
+        CategoryModel.find(jsonData, null, { sort: "-_id" }, (err, cats) => {
             if (err) throw err;
             resolve(cats);
         });
@@ -35,7 +35,7 @@ const AddProduct = (fileBuffer, jsonData, cb) => {
 
 const GetProduct = jsonData => {
     return new Promise(resolve => {
-        ProductModel.find(jsonData, (err, prods) => {
+        ProductModel.find(jsonData, null, { sort: "-_id" }, (err, prods) => {
             if (err) throw err;
             resolve(prods);
         });
@@ -57,11 +57,11 @@ const UpdateProduct = (query, jsonData, cb) => {
 };
 
 const UpdateUser = (query, jsonData, cb) => {
-    UserModel.findOneAndUpdate(query, jsonData, err=> {
+    UserModel.findOneAndUpdate(query, jsonData, err => {
         if (err) throw err;
         cb();
-    })
-}
+    });
+};
 
 const RemoveCategoryByID = ({ id }, cb) => {
     CategoryModel.findOneAndDelete({ _id: id }, err => {

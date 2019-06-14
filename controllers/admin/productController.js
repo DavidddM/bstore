@@ -16,23 +16,39 @@ router.use(static(path.join(process.env.PWD, "static")));
 
 router.get("/list", async (req, res) => {
     const products = await GetProduct({});
-    res.render("admin/productlist", { products, search: true, search_category: true });
+    res.render("admin/productlist", {
+        products,
+        search: true,
+        search_category: true
+    });
 });
 
 router.post("/list", async (req, res) => {
     let jsonData = {};
     if (req.body.category != "nothing") {
-        jsonData = Object.assign(jsonData, { category: req.body.category })
+        jsonData = Object.assign(jsonData, { category: req.body.category });
     }
     if (req.body.searcht) {
-        jsonData = Object.assign(jsonData, { "title": { "$regex": `${req.body.searcht}`, "$options": "i" } });
+        jsonData = Object.assign(jsonData, {
+            title: { $regex: `${req.body.searcht}`, $options: "i" }
+        });
     }
     const products = await GetProduct(jsonData);
-    res.render("admin/productlist", { products, active_category: req.body.category, search_text: req.body.searcht, search: true, search_category: true });
+    res.render("admin/productlist", {
+        products,
+        active_category: req.body.category,
+        search_text: req.body.searcht,
+        search: true,
+        search_category: true
+    });
 });
 
 router.get("/", (req, res) => {
-    res.render("admin/products", { buttonText: "დამატება", title: "Add", product: {} });
+    res.render("admin/products", {
+        buttonText: "დამატება",
+        title: "Add",
+        product: {}
+    });
 });
 
 router.post("/", upload.single("image"), (req, res) => {

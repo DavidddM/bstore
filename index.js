@@ -6,7 +6,7 @@ const uri = "mongodb://dbAdmin:dbPass1@ds147668.mlab.com:47668/tbase";
 const path = require("path");
 const crypto = require("crypto");
 
-const { Login } = require("./controllers/dbUtils");
+const { Login, GetProduct } = require("./controllers/dbUtils");
 const { adminController, apiController } = require("./controllers");
 const PORT = process.env.PORT || 8069;
 
@@ -33,7 +33,8 @@ app.use(
 app.use("/api", apiController);
 app.use(express.static(path.join(process.env.PWD, "static")));
 app.get("/", async (req, res) => {
-    res.redirect("/admin");
+    const products = await GetProduct({});
+    res.render("index", { products: products.slice(0, 12) });
 });
 
 app.get("/login", (req, res) => {
@@ -56,7 +57,6 @@ app.post("/login", async (req, res) => {
     } else {
         res.render("admin/login", { message: "Wrong Password!", cl: "badMsg" });
     }
-
 });
 
 app.get("/logout", (req, res) => {
